@@ -20,13 +20,15 @@
 export default {
   name: "TittleList",
   data() {
-    return { editStatus: false, editContent: "", editId: null };
+    return { editStatus: false, editContent: "" };
   },
   methods: {
     changeEditStatus(content, id) {
       this.editStatus = !this.editStatus;
       this.editContent = content;
-      this.editId = id;
+      this.$store.commit("getEditMemoArrayIndex", {
+        editId: id,
+      });
     },
     update() {
       if (this.editContent.split(/\r\n|\r|\n/)[0].trim() === "") {
@@ -35,8 +37,11 @@ export default {
       }
       this.$store.commit("editMemo", {
         content: this.editContent,
-        id: this.editId,
       });
+      this.editStatus = !this.editStatus;
+    },
+    remove() {
+      this.$store.commit("removeMemo");
       this.editStatus = !this.editStatus;
     },
   },

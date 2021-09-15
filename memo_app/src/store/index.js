@@ -11,6 +11,7 @@ export default createStore({
       { id: 2, content: "foobar" },
     ],
     uid: 0,
+    editMemoArrayIndex: null,
   },
   mutations: {
     addMemo(state, content) {
@@ -20,11 +21,16 @@ export default createStore({
         content: content["content"],
       });
     },
-    editMemo(state, memo) {
-      const editMemoArrayIndex = state.memos.findIndex(
-        (memoData) => memoData.id == memo["id"]
+    getEditMemoArrayIndex(state, memo) {
+      state.editMemoArrayIndex = state.memos.findIndex(
+        (memoData) => memoData.id == memo["editId"]
       );
-      state.memos[editMemoArrayIndex].content = memo["content"];
+    },
+    editMemo(state, memo) {
+      state.memos[state.editMemoArrayIndex].content = memo["content"];
+    },
+    removeMemo(state) {
+      state.memos.splice(state.editMemoArrayIndex, 1);
     },
   },
   actions: {},
