@@ -20,11 +20,13 @@
 export default {
   name: "TittleList",
   data() {
-    return { editStatus: false, editContent: "" };
+    return { editContent: "" };
   },
   methods: {
     changeEditStatus(content, id) {
-      this.$store.commit("toggleEditStatus");
+      if (!this.$store.state.editStatus) {
+        this.$store.commit("toggleEditStatus");
+      }
       this.editContent = content;
       this.$store.commit("getEditMemoArrayIndex", {
         editId: id,
