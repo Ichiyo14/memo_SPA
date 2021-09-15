@@ -2,7 +2,8 @@
   <div class="create-new-memo">
     <button @click="changeCreateStatus">＋</button>
     <div v-show="createStatus">
-      <textarea v-model="content"></textarea>
+      <h2>新規メモ</h2>
+      <textarea v-model="editContent"></textarea>
       <p>{{ content }}</p>
       <button @click="doAdd">追加</button>
       <p>{{ savedContent }}</p>
@@ -16,8 +17,7 @@ export default {
   data() {
     return {
       createStatus: false,
-      content: "",
-      savedContent: "",
+      editContent: "",
     };
   },
   methods: {
@@ -25,7 +25,16 @@ export default {
       this.createStatus = !this.createStatus;
     },
     doAdd() {
-      this.savedContent = this.content;
+      const savedContent = this.editContent;
+      if (savedContent.split(/\r\n|\r|\n/)[0].trim() === "") {
+        alert("一行目が記述されていません。\nタイトルとして記入してください。");
+        return;
+      }
+      this.$store.commit("addMemo", {
+        content: savedContent,
+      });
+      this.changeCreateStatus();
+      this.editContent = "";
     },
   },
 };

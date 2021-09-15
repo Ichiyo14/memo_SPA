@@ -12,13 +12,13 @@
 <script>
 export default {
   name: "TittleList",
-  data() {
-    return {
-      memos: this.$store.state.memos,
-    };
-  },
+  data() {},
   methods: {},
-  computed: {},
+  computed: {
+    memos() {
+      return this.$store.state.memos;
+    },
+  },
 };
 </script>
 
