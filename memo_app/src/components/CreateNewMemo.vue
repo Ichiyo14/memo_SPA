@@ -1,11 +1,10 @@
 <template>
   <div class="create-new-memo">
-    <button @click="changeCreateStatus">＋</button>
+    <button class="memo-plus" @click="changeCreateStatus">＋</button>
     <div v-show="createStatus">
       <h2>新規メモ</h2>
+      <button class="add" @click="doAdd">追加</button>
       <textarea v-model="editContent"></textarea>
-
-      <button @click="doAdd">追加</button>
     </div>
   </div>
 </template>
@@ -40,4 +39,17 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.memo-plus {
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #e8deb2;
+}
+.add {
+  background-color: #e8deb2;
+  border: none;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+</style>
