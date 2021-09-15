@@ -1,17 +1,17 @@
 <template>
   <h1>メモタイトル一覧</h1>
-  <TittleList></TittleList>
+  <TittleListEdit></TittleListEdit>
   <CreateNewMemo v-show="!this.$store.state.editStatus"></CreateNewMemo>
 </template>
 
 <script>
-import TittleList from "./components/TittleList.vue";
+import TittleListEdit from "./components/TittleListEdit.vue";
 import CreateNewMemo from "./components/CreateNewMemo.vue";
 
 export default {
   name: "App",
   components: {
-    TittleList,
+    TittleListEdit,
     CreateNewMemo,
   },
 };

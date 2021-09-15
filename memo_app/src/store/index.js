@@ -7,7 +7,7 @@ export default createStore({
     memos: [],
     uid: 0,
     editMemoArrayIndex: null,
-    editStatus: false
+    editStatus: false,
   },
   mutations: {
     addMemo(state, content) {
@@ -23,14 +23,14 @@ export default createStore({
       );
     },
     toggleEditStatus(state) {
-      state.editStatus = !state.editStatus
+      state.editStatus = !state.editStatus;
     },
     editMemo(state, memo) {
       state.memos[state.editMemoArrayIndex].content = memo["content"];
     },
     removeMemo(state) {
       state.memos.splice(state.editMemoArrayIndex, 1);
-    }
+    },
   },
   actions: {},
   modules: {},
