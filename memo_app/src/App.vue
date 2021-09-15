@@ -1,11 +1,10 @@
 <template>
-  <Hedder></Hedder>
+  <h1>メモタイトル一覧</h1>
   <TittleList></TittleList>
   <CreateNewMemo></CreateNewMemo>
 </template>
 
 <script>
-import Hedder from "./components/Hedder.vue";
 import TittleList from "./components/TittleList.vue";
 import CreateNewMemo from "./components/CreateNewMemo.vue";
 
@@ -13,7 +12,6 @@ export default {
   name: "App",
   components: {
     TittleList,
-    Hedder,
     CreateNewMemo,
   },
 };

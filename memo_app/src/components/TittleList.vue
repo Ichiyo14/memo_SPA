@@ -10,6 +10,10 @@
     </ul>
   </div>
   <div class="edit" v-if="editStatus">
+    <h2>
+      <span>{{ editContent.split(/\r\n|\r|\n/)[0] }}</span
+      >の詳細
+    </h2>
     <textarea v-model="editContent"></textarea>
     <button class="update" @click="update">編集</button>
     <button class="remove" @click="remove">削除</button>
@@ -64,5 +68,7 @@ ul {
 li {
   display: block;
   margin: 0 10px;
+}
+span {
 }
 </style>

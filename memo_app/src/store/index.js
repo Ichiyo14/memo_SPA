@@ -1,15 +1,10 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
+  plugins: [createPersistedState()],
   state: {
-    memos: [
-      {
-        id: 1,
-        content: `hogehug
-    na`,
-      },
-      { id: 2, content: "foobar" },
-    ],
+    memos: [],
     uid: 0,
     editMemoArrayIndex: null,
   },
