@@ -3,17 +3,43 @@
     <ul id="array-rendering">
       <li v-for="memo in memos" :key="memo.id">
         {{ memo.id }}
-        {{ memo.content.split(/\r\n|\r|\n/)[0] }}
+        <a @click="changeEditStatus(memo.content, memo.id)">{{
+          memo.content.split(/\r\n|\r|\n/)[0]
+        }}</a>
       </li>
     </ul>
+  </div>
+  <div class="edit" v-if="editStatus">
+    <textarea v-model="editContent"></textarea>
+    <button class="update" @click="update">編集</button>
+    <button class="remove" @click="remove">削除</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "TittleList",
-  data() {},
-  methods: {},
+  data() {
+    return { editStatus: false, editContent: "", editId: null };
+  },
+  methods: {
+    changeEditStatus(content, id) {
+      this.editStatus = !this.editStatus;
+      this.editContent = content;
+      this.editId = id;
+    },
+    update() {
+      if (this.editContent.split(/\r\n|\r|\n/)[0].trim() === "") {
+        alert("一行目が記述されていません。\nタイトルとして記入してください。");
+        return;
+      }
+      this.$store.commit("editMemo", {
+        content: this.editContent,
+        id: this.editId,
+      });
+      this.editStatus = !this.editStatus;
+    },
+  },
   computed: {
     memos() {
       return this.$store.state.memos;

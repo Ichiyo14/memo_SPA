@@ -4,9 +4,8 @@
     <div v-show="createStatus">
       <h2>新規メモ</h2>
       <textarea v-model="editContent"></textarea>
-      <p>{{ content }}</p>
+
       <button @click="doAdd">追加</button>
-      <p>{{ savedContent }}</p>
     </div>
   </div>
 </template>

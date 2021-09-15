@@ -10,16 +10,22 @@ export default createStore({
       },
       { id: 2, content: "foobar" },
     ],
-    uid: 0
+    uid: 0,
   },
   mutations: {
     addMemo(state, content) {
-      state.uid = state.uid + 1
+      state.uid = state.uid + 1;
       state.memos.push({
         id: state.uid,
-        content: content["content"]
-      })
-    }
+        content: content["content"],
+      });
+    },
+    editMemo(state, memo) {
+      const editMemoArrayIndex = state.memos.findIndex(
+        (memoData) => memoData.id == memo["id"]
+      );
+      state.memos[editMemoArrayIndex].content = memo["content"];
+    },
   },
   actions: {},
   modules: {},
