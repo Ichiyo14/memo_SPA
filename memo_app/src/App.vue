@@ -1,15 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <Hedder></Hedder>
+  <TittleList></TittleList>
+  <CreateNewMemo></CreateNewMemo>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Hedder from "./components/Hedder.vue";
+import TittleList from "./components/TittleList.vue";
+import CreateNewMemo from "./components/CreateNewMemo.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    TittleList,
+    Hedder,
+    CreateNewMemo,
   },
 };
 </script>
@@ -19,8 +24,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   margin-top: 60px;
+  margin-left: 20px;
 }
 </style>
